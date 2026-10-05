@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#ff3974">
+<title>Mafraise | فراولتي</title>
+<style>
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+html{
+scroll-behavior:smooth
+}
+body{
+font-family:Arial,Tahoma,sans-serif;
+background:#fff8fb;
+color:#24151b;
+overflow-x:hidden;
+transition:.3s
+}
+body.dark{
+background:#140d11;
+color:#fff
+}
+button,input{
+font:inherit
+}
+button{
+cursor:pointer
+}
+a{
+text-decoration:none;
+color:inherit
+}
+.header{
+position:fixed;
+top:0;
+right:0;
+left:0;
+height:74px;
+z-index:1000;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 6%;
+background:rgba(255,255,255,.85);
+backdrop-filter:blur(20px);
+border-bottom:1px solid #ffdce7
+}
+.dark .header{
+background:rgba(25,14,19,.85);
+border-color:#3b222b
+}
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:900;
+font-size:22px;
+color:#ff3974
+}
+.logoIcon{
+width:44px;
+height:44px;
+border-radius:15px;
+display:grid;
+place-items:center;
+background:linear-gradient(135deg,#ff3974,#ff88a9);
+color:#fff;
+font-size:24px;
+box-shadow:0 10px 25px #ff39743d
+}
+.nav{
+display:flex;
+gap:25px;
+font-weight:800;
+font-size:14px
+}
+.nav a:hover{
+color:#ff3974
+}
+.headerBtns{
+display:flex;
+gap:8px
+}
+.iconBtn{
+width:43px;
+height:43px;
+border:0;
+border-radius:14px;
+background:#fff0f5;
+color:#ff3974
+}
+.dark .iconBtn{
+background:#301923
+}
+.hero{
+min-height:100vh;
+padding:145px 7% 80px;
+display:grid;
+grid-template-columns:1.05fr .95fr;
+gap:50px;
+align-items:center;
+background:
+radial-gradient(circle at 10% 20%,#ff397425,transparent 28%),
+radial-gradient(circle at 90% 80%,#ffbad044,transparent 30%),
+linear-gradient(135deg,#fff9fb,#fff0f5)
+}
+.dark .hero{
+background:
+radial-gradient(circle at 10% 20%,#ff397425,transparent 28%),
+linear-gradient(135deg,#190f13,#251119)
+}
+.badge{
+display:inline-block;
+background:#ffe1eb;
+color:#e72763;
+padding:9px 16px;
+border-radius:50px;
+font-size:13px;
+font-weight:900;
+margin-bottom:20px
+}
+.hero h1{
+font-size:clamp(50px,8vw,95px);
+line-height:.9;
+letter-spacing:-5px;
+margin-bottom:25px
+}
+.hero h1 span{
+color:#ff3974
+}
+.hero p{
+font-size:18px;
+line-height:1.9;
+color:#765c66;
+max-width:600px
+}
+.dark .hero p,
+.dark .sectionTitle p{
+color:#c6afb8
+}
+.heroButtons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:30px
+}
+.primary{
+border:0;
+background:linear-gradient(135deg,#ff3974,#ff6f98);
+color:#fff;
+padding:16px 25px;
+border-radius:17px;
+font-weight:900;
+box-shadow:0 15px 35px #ff39743d
+}
+.secondary{
+border:1px solid #ffd1df;
+background:#fff;
+color:#ff3974;
+padding:16px 25px;
+border-radius:17px;
+font-weight:900
+}
+.dark .secondary{
+background:#211319;
+border-color:#4b2835
+}
+.heroVisual{
+height:500px;
+border-radius:45px;
+background:linear-gradient(145deg,#ffffffb8,#ffdbe8b8);
+display:grid;
+place-items:center;
+position:relative;
+overflow:hidden;
+box-shadow:0 35px 80px #a528501f
+}
+.dark .heroVisual{
+background:linear-gradient(145deg,#301923,#211118)
+}
+.heroFruit{
+font-size:175px;
+animation:float 4s ease-in-out infinite;
+filter:drop-shadow(0 25px 18px #ff39743b)
+}
+@keyframes float{
+0%,100%{transform:translateY(0) rotate(-4deg)}
+50%{transform:translateY(-20px) rotate(4deg)}
+}
+.bubble{
+position:absolute;
+border-radius:50%;
+background:#fff;
+box-shadow:0 20px 50px #ff39741c
+}
+.bubble1{
+width:100px;
+height:100px;
+top:30px;
+right:30px
+}
+.bubble2{
+width:55px;
+height:55px;
+bottom:45px;
+left:40px
+}
+.bubble3{
+width:35px;
+height:35px;
+top:48%;
+left:20px
+}
+.section{
+padding:95px 7%
+}
+.sectionTitle{
+text-align:center;
+margin-bottom:45px
+}
+.smallTitle{
+color:#ff3974;
+font-size:14px;
+font-weight:900;
+margin-bottom:10px
+}
+.sectionTitle h2{
+font-size:clamp(32px,5vw,55px)
+}
+.sectionTitle p{
+color:#765c66;
+max-width:650px;
+margin:12px auto;
+line-height:1.8
+}
+.infoGrid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px
+}
+.infoCard{
+background:#fff;
+border:1px solid #ffe0e9;
+border-radius:25px;
+padding:25px;
+box-shadow:0 15px 45px #2c0c1710
+}
+.dark .infoCard,
+.dark .menuCard,
+.dark .review,
+.dark .locationCard{
+background:#211319;
+border-color:#3d242d
+}
+.infoIcon{
+font-size:32px;
+margin-bottom:14px
+}
+.infoCard h3{
+margin-bottom:7px
+}
+.infoCard p{
+color:#765c66;
+line-height:1.7;
+font-size:14px
+}
+.dark .infoCard p{
+color:#c6afb8
+}
+.menuSection{
+background:#fff
+}
+.dark .menuSection{
+background:#180f13
+}
+.menuTools{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+margin-bottom:22px
+}
+.search{
+width:min(450px,100%);
+height:53px;
+border:1px solid #ffd3e0;
+border-radius:16px;
+background:#fff9fb;
+padding:0 18px;
+outline:none
+}
+.dark .search{
+background:#211319;
+color:#fff;
+border-color:#4b2935
+}
+.categories{
+display:flex;
+gap:8px;
+overflow-x:auto;
+padding-bottom:15px
+}
+.category{
+border:0;
+background:#fff0f5;
+color:#df2862;
+padding:11px 18px;
+border-radius:50px;
+font-weight:900;
+white-space:nowrap
+}
+.category.active{
+background:#ff3974;
+color:#fff
+}
+.menuGrid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px
+}
+.menuCard{
+background:#fffafa;
+border:1px solid #ffe1e9;
+border-radius:25px;
+padding:17px;
+transition:.25s;
+overflow:hidden
+}
+.menuCard:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 45px #ff39741a
+}
+.food{
+height:190px;
+border-radius:20px;
+display:grid;
+place-items:center;
+font-size:85px;
+background:
+radial-gradient(circle,#fff,#ffe1ea)
+}
+.menuCard h3{
+margin:17px 0 8px
+}
+.menuCard p{
+color:#806b73;
+font-size:13px;
+line-height:1.7;
+min-height:44px
+}
+.dark .menuCard p{
+color:#c3adb5
+}
+.price{
+font-size:18px;
+font-weight:900;
+color:#ff3974;
+margin-top:12px
+}
+.add{
+width:100%;
+height:45px;
+border:0;
+border-radius:14px;
+margin-top:14px;
+background:#ff3974;
+color:#fff;
+font-weight:900
+}
+.note{
+margin-top:25px;
+padding:17px;
+border-radius:18px;
+background:#fff2f7;
+border:1px solid #ffd8e4;
+color:#765c66;
+line-height:1.8;
+font-size:13px
+}
+.dark .note{
+background:#25151c;
+border-color:#422630;
+color:#c6afb8
+}
+.gallery{
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+grid-auto-rows:220px;
+gap:14px
+}
+.galleryItem{
+border-radius:25px;
+overflow:hidden;
+display:grid;
+place-items:center;
+position:relative;
+background:linear-gradient(135deg,#ffb5cc,#fff0f5);
+font-size:90px
+}
+.galleryItem:first-child{
+grid-row:span 2
+}
+.galleryItem span{
+position:absolute;
+right:14px;
+bottom:14px;
+background:#ffffffdf;
+padding:8px 13px;
+border-radius:50px;
+font-size:12px;
+font-weight:900
+}
+.galleryNotice{
+margin-top:20px;
+padding:18px;
+background:#fff2f7;
+border-radius:18px;
+color:#765c66;
+font-size:13px;
+line-height:1.8
+}
+.dark .galleryNotice{
+background:#25151c;
+color:#c6afb8
+}
+.tiktok{
+margin-top:25px;
+background:#120e11;
+color:#fff;
+padding:25px;
+border-radius:25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-wrap:wrap
+}
+.tiktok p{
+color:#cbbbc1;
+margin-top:6px
+}
+.tiktokBtn{
+background:#fff;
+color:#111;
+padding:13px 20px;
+border-radius:14px;
+font-weight:900
+}
+.location{
+background:linear-gradient(135deg,#fff1f6,#fff)
+}
+.dark .location{
+background:#180f13
+}
+.locationGrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px
+}
+.map{
+min-height:390px;
+border-radius:30px;
+display:grid;
+place-items:center;
+background:
+repeating-linear-gradient(45deg,#f5dce5 0 20px,#fff 20px 40px);
+border:1px solid #ffdbe6
+}
+.mapPin{
+font-size:85px;
+filter:drop-shadow(0 15px 10px #0002)
+}
+.locationCard{
+background:#fff;
+border:1px solid #ffe0e9;
+border-radius:30px;
+padding:35px
+}
+.locationCard h3{
+font-size:28px;
+margin-bottom:20px
+}
+.locationRow{
+display:flex;
+gap:15px;
+padding:17px 0;
+border-bottom:1px solid #f3e1e7
+}
+.locationRow:last-child{
+border:0
+}
+.locationRow b{
+display:block;
+margin-bottom:5px
+}
+.locationRow span{
+font-size:14px;
+color:#765c66;
+line-height:1.7
+}
+.dark .locationRow{
+border-color:#3d242d
+}
+.dark .locationRow span{
+color:#c6afb8
+}
+.reviews{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px
+}
+.review{
+background:#fff;
+border:1px solid #ffe0e9;
+padding:25px;
+border-radius:25px
+}
+.stars{
+color:#ffae00;
+font-size:21px;
+margin-bottom:13px
+}
+.review p{
+color:#765c66;
+font-size:14px;
+line-height:1.8
+}
+.dark .review p{
+color:#c6afb8
+}
+.review strong{
+display:block;
+margin-top:14px
+}
+.footer{
+background:#21151b;
+color:#fff;
+padding:50px 7% 25px
+}
+.footerTop{
+display:flex;
+justify-content:space-between;
+gap:30px;
+flex-wrap:wrap
+}
+.footerLogo{
+font-size:28px;
+font-weight:900;
+color:#ff6f98
+}
+.footer p{
+color:#c6b5bc;
+line-height:1.8;
+margin-top:8px
+}
+.footerBottom{
+margin-top:35px;
+padding-top:20px;
+border-top:1px solid #3d2c33;
+color:#9e8d94;
+font-size:12px;
+text-align:center
+}
+.cartButton{
+position:fixed;
+bottom:20px;
+left:20px;
+z-index:1500;
+width:64px;
+height:64px;
+border:0;
+border-radius:22px;
+background:#ff3974;
+color:#fff;
+font-size:24px;
+box-shadow:0 15px 40px #ff397459
+}
+.cartCount{
+position:absolute;
+top:-5px;
+right:-5px;
+width:23px;
+height:23px;
+display:grid;
+place-items:center;
+background:#24151b;
+border-radius:50%;
+font-size:11px
+}
+.cartPanel{
+position:fixed;
+bottom:95px;
+left:20px;
+width:min(370px,calc(100% - 40px));
+max-height:70vh;
+overflow:auto;
+background:#fff;
+border:1px solid #ffdce7;
+border-radius:25px;
+padding:22px;
+z-index:1499;
+box-shadow:0 25px 70px #2d0c1833;
+display:none
+}
+.dark .cartPanel{
+background:#211319;
+border-color:#422630
+}
+.cartPanel.show{
+display:block
+}
+.cartHeader{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px
+}
+.close{
+border:0;
+background:#fff0f5;
+color:#ff3974;
+width:35px;
+height:35px;
+border-radius:10px
+}
+.cartItem{
+display:flex;
+justify-content:space-between;
+gap:10px;
+padding:12px 0;
+border-bottom:1px solid #f1dfe5
+}
+.dark .cartItem{
+border-color:#3b242c
+}
+.total{
+font-size:20px;
+font-weight:900;
+color:#ff3974;
+margin-top:18px
+}
+.empty{
+text-align:center;
+color:#8a727b;
+padding:25px
+}
+@media(max-width:900px){
+.nav{
+display:none
+}
+.hero{
+grid-template-columns:1fr;
+padding-top:125px
+}
+.heroVisual{
+height:380px
+}
+.infoGrid{
+grid-template-columns:repeat(2,1fr)
+}
+.menuGrid{
+grid-template-columns:repeat(2,1fr)
+}
+.locationGrid{
+grid-template-columns:1fr
+}
+.reviews{
+grid-template-columns:1fr
+}
+}
+@media(max-width:600px){
+.header{
+padding:0 4%
+}
+.hero{
+padding-left:5%;
+padding-right:5%
+}
+.section{
+padding:70px 5%
+}
+.hero h1{
+letter-spacing:-3px
+}
+.heroVisual{
+height:330px;
+border-radius:30px
+}
+.heroFruit{
+font-size:125px
+}
+.infoGrid{
+grid-template-columns:1fr 1fr
+}
+.menuGrid{
+grid-template-columns:1fr
+}
+.gallery{
+grid-template-columns:1fr 1fr;
+grid-auto-rows:180px
+}
+.galleryItem:first-child{
+grid-column:span 2;
+grid-row:span 1
+}
+.locationCard{
+padding:25px
+}
+.tiktok{
+padding:20px
+}
+}
+</style>
+</head>
+<body>
+<header class="header">
+<a href="#home" class="logo">
+<div class="logoIcon">🍓</div>
+<span>Mafraise</span>
+</a>
+<nav class="nav">
+<a href="#home">الرئيسية</a>
+<a href="#about">عن المطعم</a>
+<a href="#menu">المنيو</a>
+<a href="#gallery">الصور</a>
+<a href="#location">الموقع</a>
+<a href="#reviews">التقييم</a>
+</nav>
+<div class="headerBtns">
+<button class="iconBtn" id="themeBtn">🌙</button>
+</div>
+</header>
+<main>
+<section class="hero" id="home">
+<div class="heroText">
+<div class="badge">🍓 MAFRAISE • NOUAKCHOTT</div>
+<h1>
+فراولتي
+<br>
+<span>Mafraise</span>
+</h1>
+<p>
+تجربة حلوة بطابع فراولي مميز.
+اكتشف المنيو، الصور، معلومات المكان
+وكل ما تحتاج معرفته عن Mafraise في صفحة واحدة.
+</p>
+<div class="heroButtons">
+<a href="#menu" class="primary">🍨 اكتشف المنيو</a>
+<a href="#location" class="secondary">📍 الموقع</a>
+</div>
+</div>
+<div class="heroVisual">
+<div class="bubble bubble1"></div>
+<div class="bubble bubble2"></div>
+<div class="bubble bubble3"></div>
+<div class="heroFruit">🍓</div>
+</div>
+</section>
+<section class="section" id="about">
+<div class="sectionTitle">
+<div class="smallTitle">MAFRAISE</div>
+<h2>عن فراولتي</h2>
+<p>
+معلومات أساسية عن المكان في نواكشوط،
+بتصميم بسيط وسريع ومناسب للجوال والآيباد.
+</p>
+</div>
+<div class="infoGrid">
+<div class="infoCard">
+<div class="infoIcon">🍓</div>
+<h3>الاسم</h3>
+<p>Mafraise — فراولتي</p>
+</div>
+<div class="infoCard">
+<div class="infoIcon">📍</div>
+<h3>الموقع</h3>
+<p>نواكشوط، طريق نواذيبو</p>
+</div>
+<div class="infoCard">
+<div class="infoIcon">⭐</div>
+<h3>التقييم</h3>
+<p>4.5 / 5 — حسب المعلومات المدرجة المتاحة</p>
+</div>
+<div class="infoCard">
+<div class="infoIcon">🕐</div>
+<h3>ساعات العمل</h3>
+<p>15:00 — 05:00 حسب المعلومات المدرجة المتاحة</p>
+</div>
+</div>
+</section>
+<section class="section menuSection" id="menu">
+<div class="sectionTitle">
+<div class="smallTitle">MENU</div>
+<h2>المنيو 🍨</h2>
+<p>
+ابحث عن أي صنف أو اختر القسم الذي تريده.
+</p>
+</div>
+<div class="menuTools">
+<input
+class="search"
+id="search"
+placeholder="🔎 ابحث في المنيو..."
+>
+<div class="categories">
+<button class="category active" data-cat="all">الكل</button>
+<button class="category" data-cat="ice">🍦 آيس كريم</button>
+<button class="category" data-cat="strawberry">🍓 فراولة</button>
+<button class="category" data-cat="drink">🥤 مشروبات</button>
+<button class="category" data-cat="dessert">🍰 حلويات</button>
+</div>
+</div>
+<div class="menuGrid" id="menuGrid">
+<div class="menuCard" data-cat="ice" data-name="ايس كريم فراولة">
+<div class="food">🍦</div>
+<h3>آيس كريم فراولة</h3>
+<p>
+صنف تجريبي — استبدله بالاسم والوصف والسعر الحقيقي من المنيو.
+</p>
+<div class="price">السعر عند المطعم</div>
+<button class="add" onclick="addItem('آيس كريم فراولة')">
++ أضف للسلة
+</button>
+</div>
+<div class="menuCard" data-cat="strawberry" data-name="كوب فراولة">
+<div class="food">🍓</div>
+<h3>كوب فراولة</h3>
+<p>
+صنف تجريبي — استبدله بالبيانات الحقيقية.
+</p>
+<div class="price">السعر عند المطعم</div>
+<button class="add" onclick="addItem('كوب فراولة')">
++ أضف للسلة
+</button>
+</div>
+<div class="menuCard" data-cat="drink" data-name="مشروب فراولة">
+<div class="food">🥤</div>
+<h3>مشروب فراولة</h3>
+<p>
+صنف تجريبي — استبدله بالبيانات الحقيقية.
+</p>
+<div class="price">السعر عند المطعم</div>
+<button class="add" onclick="addItem('مشروب فراولة')">
++ أضف للسلة
+</button>
+</div>
+<div class="menuCard" data-cat="dessert" data-name="حلوى فراولة">
+<div class="food">🍰</div>
+<h3>حلوى فراولة</h3>
+<p>
+صنف تجريبي — استبدله بالبيانات الحقيقية.
+</p>
+<div class="price">السعر عند المطعم</div>
+<button class="add" onclick="addItem('حلوى فراولة')">
++ أضف للسلة
+</button>
+</div>
+<div class="menuCard" data-cat="ice" data-name="ايس كريم شوكولاتة">
+<div class="food">🍨</div>
+<h3>آيس كريم شوكولاتة</h3>
+<p>
+صنف تجريبي — استبدله بالبيانات الحقيقية.
+</p>
+<div class="price">السعر عند المطعم</div>
+<button class="add" onclick="addItem('آيس كريم شوكولاتة')">
++ أضف للسلة
+</button>
+</div>
+<div class="menuCard" data-cat="strawberry" data-name="فراولة وكريمة">
+<div class="food">🍓</div>
+<h3>فراولة وكريمة</h3>
+<p>
+صنف تجريبي — استبدله بالبيانات الحقيقية.
+</p>
+<div class="price">السعر عند المطعم</div>
+<button class="add" onclick="addItem('فراولة وكريمة')">
++ أضف للسلة
+</button>
+</div>
+</div>
+<div class="note">
+⚠️ <b>ملاحظة:</b>
+الأصناف الموجودة هنا نموذجية فقط وليست منيو رسمية مؤكدة.
+أضف المنيو الحقيقية والأسعار قبل نشر الموقع كموقع رسمي للمطعم.
+</div>
+</section>
+<section class="section" id="gallery">
+<div class="sectionTitle">
+<div class="smallTitle">GALLERY</div>
+<h2>صور Mafraise 📸</h2>
+<p>
+معرض جاهز لاستقبال الصور الحقيقية للمطعم والأصناف.
+</p>
+</div>
+<div class="gallery">
+<div class="galleryItem">
+🍓
+<span>صورة Mafraise</span>
+</div>
+<div class="galleryItem">
+🍨
+<span>الحلويات</span>
+</div>
+<div class="galleryItem">
+🍦
+<span>الآيس كريم</span>
+</div>
+<div class="galleryItem">
+🥤
+<span>المشروبات</span>
+</div>
+<div class="galleryItem">
+🍰
+<span>الحلويات</span>
+</div>
+</div>
+<div class="galleryNotice">
+📸 هذه الرموز مجرد صور مؤقتة.
+يمكنك استبدالها بصور Mafraise الحقيقية عندما تحصل عليها.
+</div>
+<div class="tiktok">
+<div>
+<strong>تابع Mafraise على TikTok</strong>
+<p>@.ma.fraise</p>
+</div>
+<a
+class="tiktokBtn"
+href="https://www.tiktok.com/@.ma.fraise"
+target="_blank"
+rel="noopener"
+>
+🎵 فتح TikTok
+</a>
+</div>
+</section>
+<section class="section location" id="location">
+<div class="sectionTitle">
+<div class="smallTitle">LOCATION</div>
+<h2>أين تجد Mafraise؟ 📍</h2>
+</div>
+<div class="locationGrid">
+<div class="map">
+<div class="mapPin">📍</div>
+</div>
+<div class="locationCard">
+<h3>معلومات المكان</h3>
+<div class="locationRow">
+<div>📍</div>
+<div>
+<b>الموقع</b>
+<span>نواكشوط — طريق نواذيبو</span>
+</div>
+</div>
+<div class="locationRow">
+<div>🍓</div>
+<div>
+<b>الاسم</b>
+<span>Mafraise — فراولتي</span>
+</div>
+</div>
+<div class="locationRow">
+<div>⭐</div>
+<div>
+<b>التقييم المدرج</b>
+<span>4.5 / 5</span>
+</div>
+</div>
+<div class="locationRow">
+<div>🕐</div>
+<div>
+<b>أوقات العمل المدرجة</b>
+<span>15:00 — 05:00</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="reviews">
+<div class="sectionTitle">
+<div class="smallTitle">REVIEWS</div>
+<h2>التقييمات ⭐</h2>
+<p>
+قسم جاهز لعرض تقييمات الزوار.
+</p>
+</div>
+<div class="reviews">
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>
+مكان جميل وتجربة حلوة.
+</p>
+<strong>زائر Mafraise</strong>
+</div>
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>
+تصميم قسم التقييمات جاهز لإضافة الآراء الحقيقية.
+</p>
+<strong>زائر Mafraise</strong>
+</div>
+<div class="review">
+<div class="stars">★★★★☆</div>
+<p>
+أضف هنا تقييمًا حقيقيًا من مصدر موثوق.
+</p>
+<strong>زائر Mafraise</strong>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="footerTop">
+<div>
+<div class="footerLogo">🍓 Mafraise</div>
+<p>
+فراولتي — نواكشوط
+</p>
+</div>
+<div>
+<p>
+موقع تعريفي غير رسمي
+</p>
+<p>
+Made for Mafraise
+</p>
+</div>
+</div>
+<div class="footerBottom">
+© 2026 Mafraise — جميع الحقوق محفوظة
+</div>
+</footer>
+<button class="cartButton" id="cartButton">
+🛒
+<span class="cartCount" id="cartCount">0</span>
+</button>
+<div class="cartPanel" id="cartPanel">
+<div class="cartHeader">
+<h3>سلتك 🛒</h3>
+<button class="close" id="closeCart">×</button>
+</div>
+<div id="cartItems">
+<div class="empty">
+السلة فارغة
+</div>
+</div>
+<div class="total" id="total">
+عدد الأصناف: 0
+</div>
+</div>
+<script>
+const themeBtn=document.getElementById("themeBtn");
+themeBtn.onclick=()=>{
+document.body.classList.toggle("dark");
+themeBtn.textContent=
+document.body.classList.contains("dark")
+?"☀️"
+:"🌙";
+};
+const search=document.getElementById("search");
+const cards=[...document.querySelectorAll(".menuCard")];
+const cats=[...document.querySelectorAll(".category")];
+let selected="all";
+function filterMenu(){
+const text=search.value.toLowerCase();
+cards.forEach(card=>{
+const name=card.dataset.name.toLowerCase();
+const cat=card.dataset.cat;
+const matchText=name.includes(text);
+const matchCat=
+selected==="all" || cat===selected;
+card.style.display=
+matchText && matchCat
+?"block"
+:"none";
+});
+}
+search.addEventListener("input",filterMenu);
+cats.forEach(btn=>{
+btn.onclick=()=>{
+cats.forEach(x=>x.classList.remove("active"));
+btn.classList.add("active");
+selected=btn.dataset.cat;
+filterMenu();
+};
+});
+let cart=[];
+function addItem(name){
+cart.push(name);
+updateCart();
+const button=event.target;
+button.textContent="✓ تمت الإضافة";
+setTimeout(()=>{
+button.textContent="+ أضف للسلة";
+},900);
+}
+function updateCart(){
+const count=document.getElementById("cartCount");
+const items=document.getElementById("cartItems");
+const total=document.getElementById("total");
+count.textContent=cart.length;
+if(cart.length===0){
+items.innerHTML=
+'<div class="empty">السلة فارغة</div>';
+total.textContent="عدد الأصناف: 0";
+return;
+}
+items.innerHTML="";
+cart.forEach((item,index)=>{
+const div=document.createElement("div");
+div.className="cartItem";
+div.innerHTML=
+`
+<span>${item}</span>
+<button
+style="
+border:0;
+background:#fff0f5;
+color:#ff3974;
+border-radius:8px;
+padding:5px 9px
+"
+onclick="removeItem(${index})"
+>
+×
+</button>
+`;
+items.appendChild(div);
+});
+total.textContent=
+"عدد الأصناف: "+cart.length;
+}
+function removeItem(index){
+cart.splice(index,1);
+updateCart();
+}
+const cartButton=
+document.getElementById("cartButton");
+const cartPanel=
+document.getElementById("cartPanel");
+const closeCart=
+document.getElementById("closeCart");
+cartButton.onclick=()=>{
+cartPanel.classList.toggle("show");
+};
+closeCart.onclick=()=>{
+cartPanel.classList.remove("show");
+};
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+link.addEventListener("click",e=>{
+const id=link.getAttribute("href");
+if(id!=="#"){
+e.preventDefault();
+document.querySelector(id)?.scrollIntoView({
+behavior:"smooth"
+});
+}
+});
+});
+</script>
+</body>
+</html>
